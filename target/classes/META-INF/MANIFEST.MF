@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Title: servicos
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: arilson
+Implementation-Vendor-Id: br.com.judice.servicos.boot
+Build-Jdk: 1.8.0_221
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
+ ot-starter-parent/servicos
+Created-By: Maven Integration for Eclipse
+
