@@ -7,58 +7,6 @@
 
 -- Started on 2019-10-24 11:09:10 -03
 
-SET statement_timeout = 0;
-SET lock_timeout = 0;
-SET idle_in_transaction_session_timeout = 0;
-SET client_encoding = 'UTF8';
-SET standard_conforming_strings = on;
-SELECT pg_catalog.set_config('search_path', '', false);
-SET check_function_bodies = false;
-SET xmloption = content;
-SET client_min_messages = warning;
-SET row_security = off;
-
-DROP DATABASE escritorio;
---
--- TOC entry 2107 (class 1262 OID 16385)
--- Name: escritorio; Type: DATABASE; Schema: -; Owner: judice-v2
---
-
-CREATE DATABASE escritorio WITH TEMPLATE = template0 ENCODING = 'UTF8' LC_COLLATE = 'en_US.utf8' LC_CTYPE = 'en_US.utf8';
-
-
-ALTER DATABASE escritorio OWNER TO "judice-v2";
-
-\connect escritorio
-
-SET statement_timeout = 0;
-SET lock_timeout = 0;
-SET idle_in_transaction_session_timeout = 0;
-SET client_encoding = 'UTF8';
-SET standard_conforming_strings = on;
-SELECT pg_catalog.set_config('search_path', '', false);
-SET check_function_bodies = false;
-SET xmloption = content;
-SET client_min_messages = warning;
-SET row_security = off;
-
---
--- TOC entry 1 (class 3079 OID 12361)
--- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
---
-
-CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
-
-
---
--- TOC entry 2110 (class 0 OID 0)
--- Dependencies: 1
--- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
---
-
-COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
-
-
 --
 -- TOC entry 181 (class 1259 OID 16386)
 -- Name: seq_cliente; Type: SEQUENCE; Schema: public; Owner: judice-v2
@@ -71,8 +19,6 @@ CREATE SEQUENCE public.seq_cliente
     NO MAXVALUE
     CACHE 1;
 
-
-ALTER TABLE public.seq_cliente OWNER TO "judice-v2";
 
 SET default_tablespace = '';
 
@@ -96,9 +42,6 @@ CREATE TABLE public.cliente (
     ativo boolean
 );
 
-
-ALTER TABLE public.cliente OWNER TO "judice-v2";
-
 --
 -- TOC entry 2101 (class 0 OID 16436)
 -- Dependencies: 182
@@ -117,19 +60,6 @@ INSERT INTO public.cliente (id, nome, cpf, endereco, bairro, datacadastro, fone,
 --
 
 SELECT pg_catalog.setval('public.seq_cliente', 3, true);
-
-
---
--- TOC entry 2109 (class 0 OID 0)
--- Dependencies: 6
--- Name: SCHEMA public; Type: ACL; Schema: -; Owner: judice-v2
---
-
-REVOKE ALL ON SCHEMA public FROM PUBLIC;
-REVOKE ALL ON SCHEMA public FROM "judice-v2";
-GRANT ALL ON SCHEMA public TO "judice-v2";
-GRANT ALL ON SCHEMA public TO PUBLIC;
-
 
 -- Completed on 2019-10-24 11:09:11 -03
 
