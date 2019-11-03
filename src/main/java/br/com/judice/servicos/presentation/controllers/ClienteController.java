@@ -67,6 +67,27 @@ public class ClienteController {
 		return cliente;
 	}
 
+	@RequestMapping(method = RequestMethod.DELETE, path = "/remover-escritorio/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public String removerEscritorio(@PathVariable("id") Long id) {
+
+		StringBuilder responseBuilder = new StringBuilder();
+		responseBuilder.append("{");
+		responseBuilder.append("\"message\": \":message\"");
+		responseBuilder.append("}");
+		String response = responseBuilder.toString();
+
+		try {
+			Cliente cliente = clienteAppService.getById(id, Cliente.class);
+			clienteAppService.remove(cliente);
+			response = response.replace(":message", "Registro removido com sucesso.");
+		} catch (Exception e) {
+			response = response.replace(":message", "Não foi possível remover o registro.");
+		}
+
+		return response;
+	}
+
 	private FormClienteResponseViewModel salvarDadosCliente(FormClienteViewModel formCliente, BindingResult result) {
 		try {
 			if (result.hasFieldErrors())
@@ -80,11 +101,11 @@ public class ClienteController {
 			else
 				clienteAppService.Add(cliente);
 
-			formClienteResponseViewModel.setMessage("Dados salvos com sucesso");
+			formClienteResponseViewModel.setMessage("Dados salvos com sucesso.");
 			formClienteResponseViewModel.setSuccess(Boolean.TRUE);
 
 		} catch (ValidationException cve) {
-			formClienteResponseViewModel.setMessage("Existem erros no formulário, favor corrigir e tentar novamente");
+			formClienteResponseViewModel.setMessage("Existem erros no formulário, favor corrigir e tentar novamente.");
 			formClienteResponseViewModel.setSuccess(Boolean.FALSE);
 			formClienteResponseViewModel.setErrorList(result.getFieldErrors());
 		} catch (Exception e) {
